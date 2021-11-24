@@ -30,16 +30,19 @@ export const getMessagesSuccess = (messages) => ({
   payload: messages,
 });
 
-export const getUserRequest = () => ({
+export const getUserRequest = (data) => ({
   type: ACTION_TYPES.GET_USER_REQUEST,
+  payload: data,
 });
 
-export const loginUserRequest = () => ({
+export const loginUserRequest = (data) => ({
   type: ACTION_TYPES.LOGIN_REQUEST,
+  payload: data,
 });
 
-export const registerUserRequest = () => ({
+export const registerUserRequest = (data) => ({
   type: ACTION_TYPES.REGISTER_REQUEST,
+  payload: data,
 });
 
 export const getUserSuccess = (data) => ({
@@ -58,16 +61,16 @@ export const registerUserSuccess = (data) => ({
 });
 
 export const getUserError = (error) => ({
-  type: ACTION_TYPES.GET_USER_SUCCESS,
+  type: ACTION_TYPES.GET_USER_ERROR,
   payload: { error },
 });
 
 export const loginUserError = (error) => ({
-  type: ACTION_TYPES.LOGIN_SUCCESS,
+  type: ACTION_TYPES.LOGIN_ERROR,
   payload: { error },
 });
 
 export const registerUserError = (error) => ({
-  type: ACTION_TYPES.REGISTER_SUCCESS,
+  type: ACTION_TYPES.REGISTER_ERROR,
   payload: { error },
 });
