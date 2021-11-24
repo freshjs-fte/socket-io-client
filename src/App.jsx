@@ -4,20 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import ChatPage from "./pages/Chat";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import "./App.css";
 import { getUserRequest } from "./app/actions";
+import browserHistory from "./browserHistory";
+import "./App.css";
 
 function App() {
-  const { isLoggedIn } = useSelector((state) => state.userSlice);
+  const { isLoggedIn, data } = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(getUserRequest("test"));
+    dispatch(getUserRequest(data?._id));
   }, []);
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter history={browserHistory}>
         <nav>
           <ul>
             {isLoggedIn ? (
