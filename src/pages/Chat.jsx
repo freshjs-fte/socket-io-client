@@ -24,17 +24,14 @@ export default function ChatPage() {
 
   return (
     <div>
-      <Chat />
       <div>{isLoading && "Loading ... "}</div>
       <div>{errorMessage}</div>
       <ul>
-        {list
-          .reverse()
-          .slice(0, 9)
-          .map((msg) => {
-            return <li key={msg._id}>{msg.text}</li>;
-          })}
+        {list.slice(0, 9).reverse().map((msg) => {
+          return <li key={msg._id}>{msg.author.firstName} says:{msg.text}</li>;
+        })}
       </ul>
+      <Chat />
     </div>
   );
 }

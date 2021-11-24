@@ -36,7 +36,7 @@ const chatReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         errorMessage: null,
-        list: [...state.list, action.payload],
+        list: [action.payload, ...state.list],
       };
     }
 
