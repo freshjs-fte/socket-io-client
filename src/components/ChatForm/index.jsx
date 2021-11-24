@@ -3,10 +3,10 @@ import { bindActionCreators } from "redux";
 import { Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import * as creators from "../../app/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ChatForm() {
-  // useSelector get user
+  const {data} = useSelector((state) => state.userSlice)
   const dispatch = useDispatch();
 
   const { sendMessageRequest } = bindActionCreators(creators, dispatch);
@@ -14,7 +14,7 @@ export default function ChatForm() {
   return (
     <Formik
       onSubmit={(values, formikBag) => {
-        sendMessageRequest({ ...values, author: "6197f3fab11d16c6ea3b737c" });
+        sendMessageRequest({ ...values, author: data._id });
 
         formikBag.resetForm();
       }}

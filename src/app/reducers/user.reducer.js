@@ -21,16 +21,24 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        errorMessage: action.payload.error,
+        errorMessage: action.payload.error.error,
       };
     }
 
-    case ACTION_TYPES.GET_USER_SUCCESS:
+    case ACTION_TYPES.GET_USER_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: null,
+        data: action.payload,
+      };
+    }
     case ACTION_TYPES.LOGIN_SUCCESS:
     case ACTION_TYPES.REGISTER_SUCCESS: {
       return {
         ...state,
         isLoading: false,
+        isLoggedIn: true,
         errorMessage: null,
         data: action.payload,
       };

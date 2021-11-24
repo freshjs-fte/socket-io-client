@@ -6,4 +6,9 @@ const httpClient = axios.create({
   baseURL: `http://${domain}/api`,
 });
 
+/* 
+  add interceptors
+*/
+
+
 export default httpClient;

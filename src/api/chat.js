@@ -23,6 +23,6 @@ socket.on(constants.SOCKET.EVENTS.NEW_MESSAGE_ERROR, (error) => {
 });
 
 export const getMessages = async (data) => {
-  const response = await httpClient.get("/users/messages");
+  const response = await httpClient.get("/messages");
   return response.data;
 };

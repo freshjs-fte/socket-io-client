@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ChatPage from "./pages/Chat";
-import "./App.css";
-import { useSelector } from "react-redux";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import "./App.css";
+import { getUserRequest } from "./app/actions";
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.userSlice);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(getUserRequest("test"));
+  }, []);
 
   return (
     <div className="App">
@@ -15,7 +22,7 @@ function App() {
           <ul>
             {isLoggedIn ? (
               <li>
-                <Link to="/chat" />
+                <Link to="/chat">Chat</Link>
               </li>
             ) : (
               <>
@@ -30,15 +37,9 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route exact path="/login">
-            <LoginPage />
-          </Route>
-          <Route exact path="/register">
-            <RegisterPage />
-          </Route>
-          <Route exact path="/chat">
-            <ChatPage />
-          </Route>
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/chat" component={ChatPage} />
         </Switch>
       </BrowserRouter>
     </div>
